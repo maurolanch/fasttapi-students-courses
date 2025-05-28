@@ -12,4 +12,4 @@ class Course(Base):
     start_date = Column(Date, nullable=False)
     end_date = Column(Date, nullable=False)
 
-    enrollments = relationship("Course", back_populates="enrollments")
+    enrollments = relationship("Enrollment", back_populates="course")
