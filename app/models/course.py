@@ -1,8 +1,6 @@
 from sqlalchemy import Column, Integer, String, Date
-from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy.orm import relationship
 from database import Base
-
-Base = declarative_base()
 
 class Course(Base):
     __tablename__="courses"
