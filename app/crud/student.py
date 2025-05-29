@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from schemas.student import StudentCreation
+from schemas.student import StudentCreation, StudentOut
 from models.student import Student
 
 def create_student(db: Session, student_data: StudentCreation):
@@ -12,3 +12,6 @@ def create_student(db: Session, student_data: StudentCreation):
     db.refresh(new_student)
 
     return new_student
+
+def get_student_by_id(db: Session, student_id: int):
+    return db.query(Student).filter(Student.id == student_id).first()
