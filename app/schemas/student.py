@@ -19,7 +19,3 @@ class StudentOut(StudentBase):
 class StudentUpdate(BaseModel):
     name: Optional[str] = None
     email: Optional[EmailStr] = None
-
-class StudentDelete(BaseModel):
-    id: int
-

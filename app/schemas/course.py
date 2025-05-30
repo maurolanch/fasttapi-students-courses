@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from datetime import date
+from typing import Optional
 
 
 class CourseBase(BaseModel):
@@ -17,6 +18,9 @@ class CourseOut(CourseBase):
 
     class Config:
         orm_mode = True
-
-class CourseDelete(BaseModel):
-    id: int
+    
+class CourseUpdate(BaseModel):
+    title: Optional[str] = None
+    description: Optional[str] = None
+    start_date: Optional[date] = None
+    end_date: Optional[date] = None
