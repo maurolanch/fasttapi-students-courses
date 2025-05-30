@@ -1,5 +1,7 @@
 from schemas.enrollment import CreationEnrollment, UpdateEnrollment
 from models.enrollment import Enrollment
+from models.student import Student
+from models.course import Course
 from sqlalchemy.orm import Session
 
 
@@ -15,6 +17,15 @@ def create_enrollment(db: Session, enrollment_data: CreationEnrollment):
     return new_enrollment
 
 def update_enrollment(db: Session, enrollment_id: int, enrollment_data: UpdateEnrollment):
+
+    student = db.query(Student).filter(Student.id == enrollment_data.student_id).first()
+    if not student:
+        return None
+
+    course = db.query(Course).filter(Course.id == enrollment_data.course_id).first()
+    if not course:
+        return None
+
     enrollment = db.query(Enrollment).filter(Enrollment.id == enrollment_id).first()
 
     if not enrollment:
