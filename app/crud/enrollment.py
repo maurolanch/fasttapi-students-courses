@@ -28,3 +28,14 @@ def update_enrollment(db: Session, enrollment_id: int, enrollment_data: UpdateEn
     db.commit()
     db.refresh(enrollment)
     return enrollment
+
+def get_enrollment_by_id(db: Session, enrollment_id: int):
+    return db.query(Enrollment).filter(Enrollment.id == enrollment_id).first()
+
+def delete_enrollment_by_id(db: Session, enrollment_id: int):
+    enrollment = db.query(Enrollment).filter(Enrollment.id == enrollment_id).first()
+    if not enrollment:
+        return None
+    db.delete(enrollment)
+    db.commit()
+    return enrollment
