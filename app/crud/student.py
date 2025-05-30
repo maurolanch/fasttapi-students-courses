@@ -15,7 +15,7 @@ def create_student(db: Session, student_data: StudentCreation):
 
 def get_student_by_id(db: Session, student_id: int):
     return db.query(Student).filter(Student.id == student_id).first()
-
+    
 def update_student_by_id(db: Session, student_id: int, student_update: StudentUpdate):
     student = db.query(Student).filter(Student.id == student_id).first()
     if not student:
