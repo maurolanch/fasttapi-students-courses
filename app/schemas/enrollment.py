@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
+from typing import Optional
 
 
 class EnrollmentBase(BaseModel):
@@ -16,6 +17,8 @@ class EnrollmentOut(EnrollmentBase):
     class Config:
         orm_mode = True
 
+class UpdateEnrollment(EnrollmentBase):
+    pass
 
 class EnrollmentDelete(BaseModel):
     id: int
