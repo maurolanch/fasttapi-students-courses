@@ -1,5 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
+from typing import Optional
 
 class StudentBase(BaseModel):
     name: str
@@ -14,6 +15,10 @@ class StudentOut(StudentBase):
 
     class Config:
         orm_mode = True
+
+class StudentUpdate(BaseModel):
+    name: Optional[str] = None
+    email: Optional[EmailStr] = None
 
 class StudentDelete(BaseModel):
     id: int
